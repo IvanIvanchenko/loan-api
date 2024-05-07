@@ -69,5 +69,5 @@ make test-loan
 
 ## Swagger приложения
 ```
-http://164.90.176.53:25500/api/documentation
+http://159.89.26.243:25500/api/documentation
 ```
