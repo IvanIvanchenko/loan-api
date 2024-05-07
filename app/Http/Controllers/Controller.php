@@ -15,7 +15,7 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  * @OA\Server(
  *     description="Сервер",
- *     url="http://164.90.176.53:25500"
+ *     url="http://167.71.46.215:25500"
  * )
  * @OA\Server(
  *      description="Сервер",
