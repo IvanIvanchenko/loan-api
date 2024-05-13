@@ -78,6 +78,11 @@ make test-sentry
 make test-loan
 ```
 
+#### Запуск PHPCS
+```
+make test-code-loan
+```
+
 ## Swagger приложения
 ```
 http://167.71.46.215:25500/api/documentation
