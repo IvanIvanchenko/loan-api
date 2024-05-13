@@ -25,3 +25,6 @@ test-loan:
 
 fresh:
 	docker-compose exec php php artisan migrate:fresh
+
+test-sentry:
+	docker-compose exec php php artisan sentry:test
