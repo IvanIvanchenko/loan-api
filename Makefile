@@ -28,3 +28,7 @@ fresh:
 
 test-sentry:
 	docker-compose exec php php artisan sentry:test
+
+test-code-loan:
+	phpcs app/Http/Controllers/LoanController.php
+
