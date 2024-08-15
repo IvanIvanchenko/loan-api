@@ -1,0 +1,301 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Документация API Loan",
+        "description": "Проект loan-api создан в рамках тестового задания.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://167.71.46.215:25500",
+            "description": "Сервер"
+        },
+        {
+            "url": "http://localhost/",
+            "description": "Сервер"
+        }
+    ],
+    "paths": {
+        "/api/loans": {
+            "get": {
+                "tags": [
+                    "loans"
+                ],
+                "summary": "Получение списка займов",
+                "operationId": "53fdef403307586122900dc3b1d07368",
+                "parameters": [
+                    {
+                        "name": "date_from",
+                        "in": "query"
+                    },
+                    {
+                        "name": "date_to",
+                        "in": "query"
+                    },
+                    {
+                        "name": "amount_debt_upper",
+                        "in": "query"
+                    },
+                    {
+                        "name": "amount_debt_lower",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoansResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "loans"
+                ],
+                "summary": "Создание займа",
+                "operationId": "92bd5c653a9a8345b4f161d5ba3bbd71",
+                "requestBody": {
+                    "description": "Запрос на создание займа",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateLoanRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateLoanResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/loans/{id}": {
+            "get": {
+                "tags": [
+                    "loans"
+                ],
+                "summary": "Получение отдельного займа",
+                "operationId": "357235ea3e97150863cac011d494fbb4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetLoanByIdResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "loans"
+                ],
+                "summary": "Изменение данных займа",
+                "operationId": "9260ca840999204de9827861bffcdc83",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Запрос на изменение данных займа",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateLoanRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UpdateLoanResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "loans"
+                ],
+                "summary": "Удаление займа",
+                "operationId": "2fba7a8ac25f97a91ab075cb19fe56c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeleteLoanResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "GetLoansResponse": {
+                "type": "string",
+                "example": {
+                    "name": "Ivan",
+                    "second_name": "Ivanov",
+                    "amount_debt": 200,
+                    "updated_at": "2000-01-01T10:00:00.000000Z",
+                    "created_at": "2000-01-01T10:00:00.000000Z",
+                    "id": 1
+                }
+            },
+            "CreateLoanResponse": {
+                "type": "string",
+                "example": {
+                    "name": "Ivan",
+                    "second_name": "Ivanov",
+                    "amount_debt": 200
+                }
+            },
+            "GetLoanByIdResponse": {
+                "type": "string",
+                "example": {
+                    "name": "Ivan",
+                    "second_name": "Ivanov",
+                    "amount_debt": 200,
+                    "updated_at": "2000-01-01T10:00:00.000000Z",
+                    "created_at": "2000-01-01T10:00:00.000000Z",
+                    "id": 1
+                }
+            },
+            "UpdateLoanResponse": {
+                "type": "string",
+                "example": {
+                    "name": "Alex",
+                    "second_name": "Sidorov",
+                    "amount_debt": 777,
+                    "updated_at": "2000-01-22T22:22:22.220000Z",
+                    "created_at": "2000-01-01T10:00:00.000000Z",
+                    "id": 1
+                }
+            },
+            "DeleteLoanResponse": {
+                "type": "string",
+                "example": {
+                    "success": true
+                }
+            },
+            "CreateLoanRequest": {
+                "type": "string",
+                "example": {
+                    "name": "Ivan",
+                    "second_name": "Ivanov",
+                    "amount_debt": 200
+                }
+            },
+            "UpdateLoanRequest": {
+                "type": "string",
+                "example": {
+                    "name": "Alex",
+                    "second_name": "Sidorov",
+                    "amount_debt": 777
+                }
+            }
+        },
+        "requestBodies": {
+            "CreateLoanRequest": {
+                "description": "Запрос на создание займа",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/CreateLoanRequest"
+                        }
+                    }
+                }
+            },
+            "UpdateLoanRequest": {
+                "description": "Запрос на создание займа",
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/UpdateLoanRequest"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "loans",
+            "description": "Методы работы c займами"
+        }
+    ]
+}

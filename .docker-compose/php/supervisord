@@ -1,0 +1,12 @@
+[supervisord]
+user=admin
+nodaemon=true
+
+[program:php]
+command=php-fpm
+user=admin
+
+[program:schedule]
+command = /home/admin/schedule.sh
+startsecs = 30
+autorestart = true
